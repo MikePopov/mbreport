@@ -1557,7 +1557,7 @@ const getColums = (campaignResult) => {
 const getIdFromString = (string) => {
   let id = string.split(/[()]/);
   return id[1];
-}
+};
 
 //console.log(newCampaignResults)
 console.log(getColums(filterCampaignResultsByNetwork(newCampaignResults, networkNames)));
