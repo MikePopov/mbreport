@@ -1513,12 +1513,40 @@ let campainsJson = [
   }
 ];
 
+//let networkNames = ['Instagram Installs', 'Facebook Installs', 'Off-Facebook Installs'];
+let networkNames = 'Instagram Installs';
 
-const selectNetworks = (json, networkName) => {
-  let selectedNetworks = json.filter(items => {
+function replaceKeys(object) {
+  Object.keys(object).forEach(function (key) {
+    var newKey = key.replace(/\s+/g, '');
+    if (object[key] && typeof object[key] === 'object') {
+      replaceKeys(object[key]);
+    }
+    if (key !== newKey) {
+      object[newKey] = object[key];
+      delete object[key];
+    }
+  });
+}
+
+const filterCampaignResultsByNetwork = (campaignResults, networkName) => {
+  return campaignResults.filter(items => {
     return items.Network === networkName;
   });
-  return selectedNetworks
 };
 
-console.log(selectNetworks(campainsJson, 'Facebook Installs'));
+const getColums = (campaignResult) => {
+    return campaignResult.map(result => {
+      let campaignResult = {};
+      campaignResult.network = result.Network;
+      campaignResult.creative = result.Creative;
+      campaignResult.installs = result.Installs;
+      campaignResult.registrations = result.Registrationa8j3o0Events;
+      return campaignResult
+    })
+}
+
+//console.log(replaceKeys(campainsJson));
+replaceKeys(campainsJson);
+console.log(campainsJson);
+//console.log(getColums(filterCampaignResultsByNetwork(campainsJson, networkNames)));
