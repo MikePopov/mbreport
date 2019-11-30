@@ -1514,9 +1514,11 @@ let campainsJson = [
 ];
 
 
-const selectNetworks = (json) => {
-  let networks = json.map()
-  //return json[1].Network
+const selectNetworks = (json, networkName) => {
+  let selectedNetworks = json.filter(items => {
+    return items.Network === networkName;
+  });
+  return selectedNetworks
 };
 
-console.log(selectNetworks(campainsJson));
+console.log(selectNetworks(campainsJson, 'Facebook Installs'));
