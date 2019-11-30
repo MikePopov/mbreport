@@ -1519,11 +1519,15 @@ let networkNames = 'Instagram Installs';
 const replaceKeys = (object) => {
   Object.keys(object).forEach(function (key) {
     let newKey = key.replace(' (a8j3o0) (Events)', '');
+    let newKey2 = key.replace(' (94sjyd) (Events)', '');
     if (object[key] && typeof object[key] === 'object') {
       replaceKeys(object[key]);
     }
     if (key !== newKey) {
       object[newKey] = object[key];
+      delete object[key];
+    } else if (key !== newKey2) {
+      object[newKey2] = object[key];
       delete object[key];
     }
   });
@@ -1545,6 +1549,7 @@ const getColums = (campaignResult) => {
       campaignResult.creative = result.Creative;
       campaignResult.installs = result.Installs;
       campaignResult.registrations = result.Registration;
+      campaignResult.deposit = result.Deposit;
       return campaignResult
     })
 };
