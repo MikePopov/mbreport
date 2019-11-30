@@ -1546,13 +1546,18 @@ const getColums = (campaignResult) => {
     return campaignResult.map(result => {
       let campaignResult = {};
       campaignResult.network = result.Network;
-      campaignResult.creative = result.Creative;
+      campaignResult.id = getIdFromString(result.Creative);
       campaignResult.installs = result.Installs;
       campaignResult.registrations = result.Registration;
       campaignResult.deposit = result.Deposit;
       return campaignResult
     })
 };
+
+const getIdFromString = (string) => {
+  let id = string.split(/[()]/);
+  return id[1];
+}
 
 //console.log(newCampaignResults)
 console.log(getColums(filterCampaignResultsByNetwork(newCampaignResults, networkNames)));
