@@ -20,7 +20,7 @@
   "homepage": "https://github.com/MikePopov/mbreport#readme",
   "dependencies": {
     "@types/express": "^4.17.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "nodemon": "^2.0.1",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.2"
